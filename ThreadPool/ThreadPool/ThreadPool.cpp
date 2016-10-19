@@ -48,12 +48,8 @@ bool ThreadPool::isAvailabilityThread(Thread *thread)
 bool ThreadPool::isStillActive(Thread *thread, DWORD status)
 {
 	if (status == STILL_ACTIVE)
-	{
-		thread->setIsFree(false);
 		return true;
-	}
 
-	thread->setIsFree(true);
 	TerminateThread(thread->getHThread(), 0);
 	return false;
 }
