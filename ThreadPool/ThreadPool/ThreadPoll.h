@@ -21,6 +21,7 @@ private:
 
 	int getNumberOfFreeThread();
 	bool isAvailabilityThread(Thread *);
+	bool isStillActive(Thread*, DWORD);
 	void initialization(int, int);
 	void initializationOfPool(int, int);
 	void setMaxNumberOfThreads(int);

@@ -42,17 +42,20 @@ bool ThreadPool::isAvailabilityThread(Thread *thread)
 {
 	DWORD status;
 	GetExitCodeThread(thread->getHThread(), &status);
+	return !isStillActive(thread, status);
+}
+
+bool ThreadPool::isStillActive(Thread *thread, DWORD status)
+{
 	if (status == STILL_ACTIVE)
 	{
 		thread->setIsFree(false);
-	}
-	else
-	{
-		thread->setIsFree(true);
-		TerminateThread(thread->getHThread(), 0);
+		return true;
 	}
 
-	return thread->isFree();
+	thread->setIsFree(true);
+	TerminateThread(thread->getHThread(), 0);
+	return false;
 }
 
 int ThreadPool::getNumberOfFreeThread()

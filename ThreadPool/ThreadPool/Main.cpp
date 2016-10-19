@@ -18,7 +18,7 @@ int main()
 	ThreadPool *threadPool;
 	try
 	{
-		threadPool = new ThreadPool(3, 2);
+		threadPool = new ThreadPool(2, 2);
 		threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod);
 		threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod2);
 		threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod2);
