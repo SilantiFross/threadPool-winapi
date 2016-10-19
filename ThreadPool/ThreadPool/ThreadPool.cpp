@@ -22,8 +22,15 @@ void ThreadPool::initialization(int initialNumberOfThreads, int maxNumberOfThrea
 
 void ThreadPool::initializationOfPool(int initialNumberOfThreads, int maxNumberOfThreads)
 {
-	_repositoryThreads = new Thread[maxNumberOfThreads];
-	_numberOfThreads = initialNumberOfThreads;
+	if (initialNumberOfThreads <= maxNumberOfThreads)
+	{
+		_repositoryThreads = new Thread[maxNumberOfThreads];
+		_numberOfThreads = initialNumberOfThreads;
+	}
+	else
+	{
+		throw ThreadPoolException("The maximum number of threads cannot be less than the initialized.\n");
+	}
 }
 
 void ThreadPool::setMaxNumberOfThreads(int value)

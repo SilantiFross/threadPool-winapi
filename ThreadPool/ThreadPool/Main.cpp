@@ -16,11 +16,19 @@ void testMethod()
 int main()
 {
 	ThreadPool *threadPool;
-	threadPool = new ThreadPool(2, 4);
-	threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod);
-	threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod2);
-	threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod2);
-	threadPool->~ThreadPool();
+	try
+	{
+		threadPool = new ThreadPool(3, 2);
+		threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod);
+		threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod2);
+		threadPool->addNewTask((LPTHREAD_START_ROUTINE)testMethod2);
+		threadPool->~ThreadPool();
+	}
+	catch (const ThreadPoolException& e)
+	{
+		printf(e.what());
+	}
+
 	_getch();
 	return 0;
 }

@@ -5,3 +5,24 @@
 21:54:30 Message: The thread pool has completed work
 |*******************************************|
 
+22:16:04 Message: INITIALIZE: Created 3 threads. The max threads: 2
+22:16:06 Warning! No available threads in the pool.
+22:16:07 Warning! No available threads in the pool.
+22:16:07 Warning! No available threads in the pool.
+22:16:07 Message: The thread pool has completed work
+|*******************************************|
+
+22:37:17 Message: INITIALIZE: Created 2 threads. The max threads: 3
+22:37:17 Message: Create a new task. Thread id: 192
+22:37:17 Message: Create a new task. Thread id: 196
+22:37:17 Warning! No available threads in the pool.
+22:37:17 Message: The thread pool has completed work
+|*******************************************|
+
+22:37:25 Message: INITIALIZE: Created 2 threads. The max threads: 3
+22:37:25 Message: Create a new task. Thread id: 184
+22:37:25 Message: Create a new task. Thread id: 68
+22:37:25 Warning! No available threads in the pool.
+22:37:25 Message: The thread pool has completed work
+|*******************************************|
+
