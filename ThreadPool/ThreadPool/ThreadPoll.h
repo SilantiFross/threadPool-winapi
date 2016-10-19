@@ -11,6 +11,7 @@ public:
 	~ThreadPool();
 	void addNewTask(LPTHREAD_START_ROUTINE);
 	void addNewThreadInPool();
+	void deleteThreadInPool();
 private:
 	Thread *_repositoryThreads;
 	int _numberOfThreads;

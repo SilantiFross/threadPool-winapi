@@ -1,35 +1,7 @@
-21:28:57 Message: INITIALIZE: Created 2 threads. The max threads: 4
-21:28:57 Message: Create a new task. Thread id: 192
-21:28:57 Message: Create a new task. Thread id: 184
-21:28:57 Message: The thread pool has completed work
-|*******************************************|
-
-21:29:56 Message: INITIALIZE: Created 2 threads. The max threads: 4
-21:29:56 Message: Create a new task. Thread id: 184
-21:29:56 Message: Create a new task. Thread id: 188
-21:29:56 Warning! No available threads in the pool.
-21:29:56 Message: The thread pool has completed work
-|*******************************************|
-
-21:30:32 Message: INITIALIZE: Created 2 threads. The max threads: 4
-21:30:32 Message: Create a new task. Thread id: 188
-21:30:32 Message: Create a new task. Thread id: 180
-21:30:32 Message: Create a new task. Thread id: 192
-21:30:32 Message: The thread pool has completed work
-|*******************************************|
-
-21:31:15 Message: INITIALIZE: Created 2 threads. The max threads: 4
-21:31:15 Message: Create a new task. Thread id: 180
-21:31:15 Message: Create a new task. Thread id: 188
-21:31:15 Error! The excess of the maximum number of working threads
-21:31:15 Message: Create a new task. Thread id: 196
-21:31:15 Message: The thread pool has completed work
-|*******************************************|
-
-21:31:49 Message: INITIALIZE: Created 2 threads. The max threads: 4
-21:31:49 Message: Create a new task. Thread id: 184
-21:31:49 Message: Create a new task. Thread id: 180
-21:31:49 Warning! No available threads in the pool.
-21:31:49 Message: The thread pool has completed work
+21:54:30 Message: INITIALIZE: Created 2 threads. The max threads: 4
+21:54:30 Message: Create a new task. Thread id: 180
+21:54:30 Message: Create a new task. Thread id: 184
+21:54:30 Warning! No available threads in the pool.
+21:54:30 Message: The thread pool has completed work
 |*******************************************|
 

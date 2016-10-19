@@ -13,6 +13,7 @@ public:
 	void logNewTask(int);
 	void logWarningAvailability();
 	void logErrorExcess();
+	void logErrorShortage();
 	void logShutdown();
 private:
 	SYSTEMTIME _systemTime;

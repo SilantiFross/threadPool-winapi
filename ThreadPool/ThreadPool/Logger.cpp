@@ -35,6 +35,12 @@ void Logger::logErrorExcess()
 	fprintf(_fileHandler, "Error! The excess of the maximum number of working threads\n");
 }
 
+void Logger::logErrorShortage()
+{
+	logTime();
+	fprintf(_fileHandler, "Error! The shortage of threads in the pool! Need at least one thread\n");
+}
+
 void Logger::logShutdown()
 {
 	logTime();

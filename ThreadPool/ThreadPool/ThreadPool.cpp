@@ -59,7 +59,7 @@ int ThreadPool::getNumberOfFreeThread()
 }
 
 void ThreadPool::addNewThreadInPool()
-{ 
+{
 	if (_numberOfThreads < _maxNumberOfThreads)
 	{
 		_numberOfThreads++;
@@ -67,6 +67,18 @@ void ThreadPool::addNewThreadInPool()
 	else
 	{
 		_logger->logErrorExcess();
+	}
+}
+
+void ThreadPool::deleteThreadInPool()
+{
+	if (_numberOfThreads > 1)
+	{
+		_numberOfThreads--;
+	}
+	else
+	{
+		_logger->logErrorShortage();
 	}
 }
 
@@ -82,6 +94,7 @@ void ThreadPool::addNewTask(LPTHREAD_START_ROUTINE lpStartAddress)
 	else
 	{
 		_logger->logWarningAvailability();
+
 	}
 }
 
