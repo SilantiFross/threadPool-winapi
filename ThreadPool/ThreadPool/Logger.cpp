@@ -2,7 +2,8 @@
 
 Logger::Logger(char *logFileName)
 {
-	_fileHandler = fopen(logFileName, "a");
+	errno_t err;
+	err = fopen_s(&_fileHandler, logFileName, "a");
 }
 
 Logger::~Logger()
@@ -38,6 +39,7 @@ void Logger::logShutdown()
 {
 	logTime();
 	fprintf(_fileHandler, "Message: The thread pool has completed work\n");
+	fprintf(_fileHandler, "|*******************************************|\n\n");
 }
 
 void Logger::logTime()

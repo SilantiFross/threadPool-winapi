@@ -34,18 +34,18 @@ void ThreadPool::setMaxNumberOfThreads(int value)
 bool ThreadPool::isAvailabilityThread(Thread *thread)
 {
 	DWORD status;
-	GetExitCodeThread(thread->getHThread, &status);
+	GetExitCodeThread(thread->getHThread(), &status);
 	if (status == STILL_ACTIVE)
 	{
-		thread->setIsFree = false;
+		thread->setIsFree(false);
 	}
 	else
 	{
-		thread->setIsFree = true;
-		TerminateThread(thread->getHThread, 0);
+		thread->setIsFree(true);
+		TerminateThread(thread->getHThread(), 0);
 	}
 
-	return thread->isFree;
+	return thread->isFree();
 }
 
 int ThreadPool::getNumberOfFreeThread()
@@ -77,7 +77,7 @@ void ThreadPool::addNewTask(LPTHREAD_START_ROUTINE lpStartAddress)
 	{
 		_repositoryThreads[currentThreadNumber].createNewThread(lpStartAddress);
 
-		_logger->logNewTask(_repositoryThreads[currentThreadNumber].getHThread);
+		_logger->logNewTask((int)_repositoryThreads[currentThreadNumber].getHThread());
 	}
 	else
 	{
@@ -88,5 +88,5 @@ void ThreadPool::addNewTask(LPTHREAD_START_ROUTINE lpStartAddress)
 ThreadPool::~ThreadPool()
 {
 	_logger->logShutdown();
-	_logger->~Logger;
+	_logger->~Logger();
 }

@@ -1,5 +1,7 @@
 #pragma once
-#include <WinBase.h>
+#include <Windows.h>
+#include <process.h>
+#include <string>
 #include <iostream>
 
 class Logger
