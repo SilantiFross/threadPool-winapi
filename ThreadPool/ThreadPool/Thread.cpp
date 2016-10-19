@@ -2,31 +2,31 @@
 
 Thread::Thread()
 {
-	isFree_ = true;
+	_isFree = true;
 }
 
 bool Thread::isFree()
 {
-	return isFree_;
+	return _isFree;
 }
 
 HANDLE Thread::getHThread()
 {
-	return hThread_;
+	return _hThread;
 }
 
 void Thread::setIsFree(bool value)
 {
-	isFree_ = value;
+	_isFree = value;
 }
 
 void Thread::createNewThread(LPTHREAD_START_ROUTINE lpStartAddress)
 {
-	hThread_ = CreateThread(NULL, 0, lpStartAddress, NULL, 0, NULL);
-	isFree_ = false;
+	_hThread = CreateThread(NULL, 0, lpStartAddress, NULL, 0, NULL);
+	_isFree = false;
 }
 
 Thread::~Thread()
 {
-
+	delete _hThread;
 }

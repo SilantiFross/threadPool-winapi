@@ -13,18 +13,22 @@ ThreadPool::ThreadPool(int maxNumberOfThreads)
 void ThreadPool::initialization(int initialNumberOfThreads, int maxNumberOfThreads)
 {
 	setMaxNumberOfThreads(maxNumberOfThreads);
-	initializationOfPool(initialNumberOfThreads);
+	initializationOfPool(initialNumberOfThreads, maxNumberOfThreads);
+
+	_logger = new Logger("logfile.dat");
+	_logger->logInitializeThreadPool(initialNumberOfThreads, maxNumberOfThreads);
+
 }
 
-void ThreadPool::initializationOfPool(int initialNumberOfThreads)
+void ThreadPool::initializationOfPool(int initialNumberOfThreads, int maxNumberOfThreads)
 {
-	repositoryThreads_ = new Thread[initialNumberOfThreads];
-	numberOfThread_ = initialNumberOfThreads;
+	_repositoryThreads = new Thread[maxNumberOfThreads];
+	_numberOfThreads = initialNumberOfThreads;
 }
 
 void ThreadPool::setMaxNumberOfThreads(int value)
 {
-	maxNumberOfThreads_ = value;
+	_maxNumberOfThreads = value;
 }
 
 bool ThreadPool::isAvailabilityThread(Thread *thread)
@@ -46,12 +50,24 @@ bool ThreadPool::isAvailabilityThread(Thread *thread)
 
 int ThreadPool::getNumberOfFreeThread()
 {
-	for (int i = 0; i < numberOfThread_; i++)
+	for (int i = 0; i < _numberOfThreads; i++)
 	{
-		if (isAvailabilityThread(&repositoryThreads_[i]))
+		if (isAvailabilityThread(&_repositoryThreads[i]))
 			return i;
 	}
 	return -1;
+}
+
+void ThreadPool::addNewThreadInPool()
+{ 
+	if (_numberOfThreads < _maxNumberOfThreads)
+	{
+		_numberOfThreads++;
+	}
+	else
+	{
+		_logger->logErrorExcess();
+	}
 }
 
 void ThreadPool::addNewTask(LPTHREAD_START_ROUTINE lpStartAddress)
@@ -59,15 +75,18 @@ void ThreadPool::addNewTask(LPTHREAD_START_ROUTINE lpStartAddress)
 	int currentThreadNumber = getNumberOfFreeThread();
 	if (currentThreadNumber != -1)
 	{
-		repositoryThreads_[currentThreadNumber].createNewThread(lpStartAddress);
+		_repositoryThreads[currentThreadNumber].createNewThread(lpStartAddress);
+
+		_logger->logNewTask(_repositoryThreads[currentThreadNumber].getHThread);
 	}
 	else
 	{
-
+		_logger->logWarningAvailability();
 	}
 }
 
 ThreadPool::~ThreadPool()
 {
-
+	_logger->logShutdown();
+	_logger->~Logger;
 }

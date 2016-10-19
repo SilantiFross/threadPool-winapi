@@ -11,6 +11,6 @@ public:
 	void setIsFree(bool);
 	void createNewThread(LPTHREAD_START_ROUTINE);
 private:
-	bool isFree_;
-	HANDLE hThread_;
+	bool _isFree;
+	HANDLE _hThread;
 };
